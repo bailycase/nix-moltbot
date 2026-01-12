@@ -494,6 +494,16 @@ in
         maxConcurrent = lib.mkOption {
           type = t.int;
         };
+        model = lib.mkOption {
+          type = t.oneOf [ t.str t.submodule { options = {
+          fallbacks = lib.mkOption {
+            type = t.listOf (t.str);
+          };
+          primary = lib.mkOption {
+            type = t.str;
+          };
+        }; } ];
+        };
       }; };
       };
       thinkingDefault = lib.mkOption {
@@ -797,6 +807,16 @@ in
         type = t.submodule { options = {
         allowAgents = lib.mkOption {
           type = t.listOf (t.str);
+        };
+        model = lib.mkOption {
+          type = t.oneOf [ t.str t.submodule { options = {
+          fallbacks = lib.mkOption {
+            type = t.listOf (t.str);
+          };
+          primary = lib.mkOption {
+            type = t.str;
+          };
+        }; } ];
         };
       }; };
       };
