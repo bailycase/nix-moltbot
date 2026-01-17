@@ -307,6 +307,22 @@ in
           baseUrl = lib.mkOption {
             type = t.str;
           };
+          batch = lib.mkOption {
+            type = t.submodule { options = {
+            enabled = lib.mkOption {
+              type = t.bool;
+            };
+            pollIntervalMs = lib.mkOption {
+              type = t.int;
+            };
+            timeoutMinutes = lib.mkOption {
+              type = t.int;
+            };
+            wait = lib.mkOption {
+              type = t.bool;
+            };
+          }; };
+          };
           headers = lib.mkOption {
             type = t.attrsOf (t.str);
           };
@@ -704,6 +720,22 @@ in
           };
           baseUrl = lib.mkOption {
             type = t.str;
+          };
+          batch = lib.mkOption {
+            type = t.submodule { options = {
+            enabled = lib.mkOption {
+              type = t.bool;
+            };
+            pollIntervalMs = lib.mkOption {
+              type = t.int;
+            };
+            timeoutMinutes = lib.mkOption {
+              type = t.int;
+            };
+            wait = lib.mkOption {
+              type = t.bool;
+            };
+          }; };
           };
           headers = lib.mkOption {
             type = t.attrsOf (t.str);
