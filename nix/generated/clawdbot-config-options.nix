@@ -1217,39 +1217,6 @@ in
   }; });
   };
 
-  bridge = lib.mkOption {
-    type = t.submodule { options = {
-    bind = lib.mkOption {
-      type = t.oneOf [ t.enum [ "auto" ] t.enum [ "lan" ] t.enum [ "tailnet" ] t.enum [ "loopback" ] ];
-    };
-    enabled = lib.mkOption {
-      type = t.bool;
-    };
-    port = lib.mkOption {
-      type = t.int;
-    };
-    tls = lib.mkOption {
-      type = t.submodule { options = {
-      autoGenerate = lib.mkOption {
-        type = t.bool;
-      };
-      caPath = lib.mkOption {
-        type = t.str;
-      };
-      certPath = lib.mkOption {
-        type = t.str;
-      };
-      enabled = lib.mkOption {
-        type = t.bool;
-      };
-      keyPath = lib.mkOption {
-        type = t.str;
-      };
-    }; };
-    };
-  }; };
-  };
-
   broadcast = lib.mkOption {
     type = t.submodule { options = {
     strategy = lib.mkOption {
@@ -3331,7 +3298,7 @@ in
     }; };
     };
     bind = lib.mkOption {
-      type = t.oneOf [ t.enum [ "auto" ] t.enum [ "lan" ] t.enum [ "tailnet" ] t.enum [ "loopback" ] ];
+      type = t.oneOf [ t.enum [ "auto" ] t.enum [ "lan" ] t.enum [ "loopback" ] t.enum [ "custom" ] ];
     };
     controlUi = lib.mkOption {
       type = t.submodule { options = {
@@ -3400,6 +3367,25 @@ in
       };
       resetOnExit = lib.mkOption {
         type = t.bool;
+      };
+    }; };
+    };
+    tls = lib.mkOption {
+      type = t.submodule { options = {
+      autoGenerate = lib.mkOption {
+        type = t.bool;
+      };
+      caPath = lib.mkOption {
+        type = t.str;
+      };
+      certPath = lib.mkOption {
+        type = t.str;
+      };
+      enabled = lib.mkOption {
+        type = t.bool;
+      };
+      keyPath = lib.mkOption {
+        type = t.str;
       };
     }; };
     };
