@@ -3450,6 +3450,48 @@ in
   }; };
   };
 
+  diagnostics = lib.mkOption {
+    type = t.submodule { options = {
+    enabled = lib.mkOption {
+      type = t.bool;
+    };
+    otel = lib.mkOption {
+      type = t.submodule { options = {
+      enabled = lib.mkOption {
+        type = t.bool;
+      };
+      endpoint = lib.mkOption {
+        type = t.str;
+      };
+      flushIntervalMs = lib.mkOption {
+        type = t.int;
+      };
+      headers = lib.mkOption {
+        type = t.attrsOf (t.str);
+      };
+      logs = lib.mkOption {
+        type = t.bool;
+      };
+      metrics = lib.mkOption {
+        type = t.bool;
+      };
+      protocol = lib.mkOption {
+        type = t.oneOf [ t.enum [ "http/protobuf" ] t.enum [ "grpc" ] ];
+      };
+      sampleRate = lib.mkOption {
+        type = t.number;
+      };
+      serviceName = lib.mkOption {
+        type = t.str;
+      };
+      traces = lib.mkOption {
+        type = t.bool;
+      };
+    }; };
+    };
+  }; };
+  };
+
   discovery = lib.mkOption {
     type = t.submodule { options = {
     wideArea = lib.mkOption {
