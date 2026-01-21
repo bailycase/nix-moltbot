@@ -1279,6 +1279,13 @@ in
     remoteCdpTimeoutMs = lib.mkOption {
       type = t.int;
     };
+    snapshotDefaults = lib.mkOption {
+      type = t.submodule { options = {
+      mode = lib.mkOption {
+        type = t.enum [ "efficient" ];
+      };
+    }; };
+    };
   }; };
   };
 
@@ -5091,6 +5098,9 @@ in
           type = t.bool;
         };
         maxChars = lib.mkOption {
+          type = t.int;
+        };
+        maxRedirects = lib.mkOption {
           type = t.int;
         };
         timeoutSeconds = lib.mkOption {
