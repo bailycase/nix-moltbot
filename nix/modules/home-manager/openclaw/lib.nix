@@ -10,7 +10,7 @@ let
     excludeToolNames = effectiveExcludeTools;
   };
   toolOverridesEnabled = cfg.toolNames != null || effectiveExcludeTools != [];
-  toolSets = import ../../tools/extended.nix ({ inherit pkgs; } // toolOverrides);
+  toolSets = import ../../../tools/extended.nix ({ inherit pkgs; } // toolOverrides);
   defaultPackage =
     if toolOverridesEnabled && cfg.package == pkgs.openclaw
     then (pkgs.openclawPackages.withTools toolOverrides).openclaw
