@@ -4,6 +4,8 @@
 , fetchurl
 , nodejs_22
 , pnpm_10
+, cmake
+, ninja
 , pkg-config
 , jq
 , python3
@@ -57,6 +59,8 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     nodejs_22
     pnpm_10
+    cmake
+    ninja
     pkg-config
     jq
     python3
@@ -88,6 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postPatch = "${../scripts/gateway-postpatch.sh}";
+  dontConfigure = true;
   buildPhase = "${../scripts/gateway-build.sh}";
   installPhase = "${../scripts/gateway-install.sh}";
   dontStrip = true;
